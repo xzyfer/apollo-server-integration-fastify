@@ -46,18 +46,18 @@ jobs:
   Incremental Delivery:
     executor:
       name: node/default
-      tag: '20'
+      tag: '20.19'
     environment:
       INCREMENTAL_DELIVERY_TESTS_ENABLED: t
     steps:
       - setup-node:
-          node-version: "20"
+          node-version: "20.19"
       - run: npm i --legacy-peer-deps graphql@17.0.0-alpha.1.canary.pr.3361.04ab27334641e170ce0e05bc927b972991953882
       - run: npm run test:ci
   Lint:
     executor:
       name: node/default
-      tag: '20'
+      tag: '20.19'
     steps:
       - checkout
       - node/install-packages
@@ -66,7 +66,7 @@ jobs:
   Prettier:
     executor:
       name: node/default
-      tag: '20'
+      tag: '20.19'
     steps:
       - checkout
       - node/install-packages
@@ -83,7 +83,7 @@ workflows:
           matrix:
             parameters:
               node-version:
-                - "20"
-                - "22"
-                - "24"
+                - "20.19"
+                - "22.15"
+                - "24.0"
       - Incremental Delivery
